@@ -10,7 +10,7 @@ use r2d2_postgres::{TlsMode, PostgresConnectionManager};
 #[test]
 fn test_basic() {
     let manager =
-        PostgresConnectionManager::new("postgres://postgres:password@localhost", TlsMode::None)
+        PostgresConnectionManager::new("postgres://postgres@localhost:5433", TlsMode::None)
             .unwrap();
     let pool = r2d2::Pool::builder().max_size(2).build(manager).unwrap();
 
@@ -42,7 +42,7 @@ fn test_basic() {
 #[test]
 fn test_is_valid() {
     let manager =
-        PostgresConnectionManager::new("postgres://postgres:password@localhost", TlsMode::None)
+        PostgresConnectionManager::new("postgres://postgres@localhost:5433", TlsMode::None)
             .unwrap();
     let pool = r2d2::Pool::builder()
         .max_size(1)
